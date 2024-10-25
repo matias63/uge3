@@ -1,0 +1,18 @@
+customer_idnameemailpurchase_amount
+1001John Doejohn.doe@example.com120.00
+1002Jane Smithjane.smith@example.com350.50
+1003Emily Jonesemily.jones@example.com400.00
+1004Mark Brownmark.brown@example.com
+1005Alice Johnsonalice.johnson@example.com150.75
+
+1006David Wilsondavid.wilson@example.com500.20
+1007Sarah Millersarah.miller@example.com340.60
+1008James Moorejames.moore@example.com220.10
+1009Patricia Taylorpatricia.taylor@example.com65000
+
+1010Michael Andersonmichael.anderson@example.com29999
+1011Linda Thomaslinda.thomas@example.com189.50
+1012Robert Jacksonrobert.jackson@example.com110.00
+1013Maria Harrismaria.harris@example.com560.45
+1014Charles Clarkcharles.clark@example.com430.00
+1015Jennifer Lewisjennifer.lewis@example.com299.95
