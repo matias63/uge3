@@ -1,4 +1,5 @@
 import pandas as pd
+from pandasql import sqldf
 import mysql.connector
 import base64
 import pyodbc 
@@ -9,15 +10,18 @@ def main():
 
     # df = pd.read_csv('data.csv')
     # print(df)
+    df = pd.
 
 
 def obscufate_data():
-    print(base64.b64encode("TYXpopKBR67()".encode("utf-8")))
-    encoded_password = base64.b64encode("password".encode("utf-8"))
-    print(base64.b64decode(encoded_password).decode("utf-8"))
-    return encoded_password
+    # print(base64.b64encode("TYXpopKBR67()".encode("utf-8")))
+    encoded_password = b'VFlYcG9wS0JSNjcoKQ=='
+    # encoded_password = base64.b64encode("password".encode("utf-8"))
+    # print(base64.b64decode(encoded_password).decode("utf-8"))
+    decoded_password = base64.b64decode(encoded_password).decode("utf-8")
+    return decoded_password
 
-def database_connect(encoded_password):
+def database_connect(decoded_password):
     
     # # Connect to server
     # cnx = mysql.connector.connect(
@@ -53,13 +57,14 @@ def database_connect(encoded_password):
     # Create a cursor from the connection
     cursor = cnxn.cursor()
     cursor.execute("USE northwind;")
-    cursor.execute('SELECT OrderID FROM Orders WHERE ShipRegion is NULL and  ShipCountry = "Germany" and Freight >= 100 and EmployeeID = 1 and YEAR(OrderDate) = 1996;')
-    rows = cursor.fetchall()
-    print(rows)
+    cursor.execute('SELECT Customers.Country,SUM(Order_Details.Quantity * Order_Details.UnitPrice * (1 - Order_Details.Discount)) AS TotalSales FROM Orders JOIN Customers ON Orders.CustomerID = Customers.CustomerID JOIN Order_Details ON Orders.OrderID = Order_Details.OrderID GROUP BY Customers.Country ORDER BY TotalSales DESC;')
+    orders = cursor.fetchall()
+    print(orders)
     cursor.description
     breakpoint()
 
-    cursor.close()
+    cnxn.close()
+    return orders
 
 if __name__ == "__main__":
     main()
