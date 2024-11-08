@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 def main():
     parser = argparse.ArgumentParser(description="Simple program to greet the user.")
     # Adding arguments
-    parser.add_argument("file", type=str, help="File to read")
+    parser.add_argument("-f","--file", required=True, type=str, help="File to read")
     parser.add_argument("column", type=str, help="column names")
 
     
@@ -42,8 +42,8 @@ def main():
 
 ### Plotting the histogram
 def plot_histogram(counter):
-    letters = list(sorted(counter.keys())) #sorting the order of the histogram
-    counts = list(counter.values())
+    letters = sorted(counter.keys()) #sorting the order of the histogram
+    counts = counter.values()
 
     plt.bar(letters, counts)
 
